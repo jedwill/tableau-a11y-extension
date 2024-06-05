@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionManifest xmlns="http://www.tableau.com/xml/user">
+    <Name>AI Alt Text Generator</Name>
+    <Description>Generates alt text for data visualizations using AI</Description>
+    <Version>1.0</Version>
+    <Author>
+        <Name>Your Name</Name>
+        <Company>Your Company</Company>
+        <Email>your.email@example.com</Email>
+    </Author>
+    <Urls>
+        <Url>https://your-hosted-extension-url/index.html</Url>
+    </Urls>
+    <RequiredExtensions>
+        <RequiredExtension id="tableau-api">
+            <MinVersion>1.0</MinVersion>
+            <MaxVersion>1.0</MaxVersion>
+        </RequiredExtension>
+    </RequiredExtensions>
+</ExtensionManifest>
