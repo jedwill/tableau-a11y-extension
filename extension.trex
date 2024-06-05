@@ -1,20 +1,28 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ExtensionManifest xmlns="http://tableau.com/xml/extensions">
-    <Name>AI Alt Text Generator</Name>
-    <Description>Generates alt text for data visualizations using AI</Description>
-    <Version>1.0</Version>
-    <Author>
-        <Name>Your Name</Name>
-        <Company>Your Company</Company>
-        <Email>your.email@example.com</Email>
-    </Author>
-    <Urls>
-        <Url>https://jedwill.github.io/tableau-a11y-extension/</Url>
-    </Urls>
-    <RequiredExtensions>
-        <RequiredExtension id="tableau-api">
-            <MinVersion>1.0</MinVersion>
-            <MaxVersion>1.0</MaxVersion>
-        </RequiredExtension>
-    </RequiredExtensions>
-</ExtensionManifest>
+        <?xml version="1.0" encoding="utf-8"?> 
+        <manifest manifest-version="0.1" xmlns="http://www.tableau.com/xml/extension_manifest">
+          <dashboard-extension id="com.example.extensions.name" extension-version="0.1.0">
+            <default-locale>en_US</default-locale>
+            <name resource-id="name"/>
+            <description>Extension Description</description>
+            <author name="" email="" organization="My Company" website="https://jedwill.github.io/tableau-a11y-extension"/>
+            <min-api-version>1.0</min-api-version>
+            <source-location>
+              <url>https://jedwill.github.io/tableau-a11y-extension/</url> 
+            </source-location>
+            <icon>Base64-Encoded ICON</icon>
+            <permissions>
+    	       <permission>full data</permission>
+            </permissions>
+            <context-menu>
+              <configure-context-menu-item />
+            </context-menu>
+          </dashboard-extension>
+          <resources>
+            <resource id="name">
+              <text locale="en_US">name in English</text>
+              <text locale="fr_BE">name in French</text>
+              <text locale="de_DE">name in German</text>
+            </resource>
+          </resources>
+        </manifest>
+
