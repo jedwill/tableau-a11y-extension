@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ExtensionManifest xmlns="http://www.tableau.com/xml/user">
+<ExtensionManifest xmlns="http://tableau.com/xml/extensions">
     <Name>AI Alt Text Generator</Name>
     <Description>Generates alt text for data visualizations using AI</Description>
     <Version>1.0</Version>
