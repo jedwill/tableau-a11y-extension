@@ -9,7 +9,7 @@
         <Email>your.email@example.com</Email>
     </Author>
     <Urls>
-        <Url>https://your-hosted-extension-url/index.html</Url>
+        <Url>https://jedwill.github.io/tableau-a11y-extension/</Url>
     </Urls>
     <RequiredExtensions>
         <RequiredExtension id="tableau-api">
