@@ -9,6 +9,7 @@
     <source-location>
         <url>https://jedwill.github.io/tableau-a11y-extension/</url> 
     </source-location>
+    <icon></icon>
     <permissions>
         <permission>full data</permission>
     </permissions>
