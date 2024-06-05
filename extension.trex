@@ -9,7 +9,6 @@
     <source-location>
         <url>https://jedwill.github.io/tableau-a11y-extension/</url> 
     </source-location>
-    <icon>Base64-Encoded ICON</icon>
     <permissions>
         <permission>full data</permission>
     </permissions>
