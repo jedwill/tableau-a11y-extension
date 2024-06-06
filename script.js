@@ -1,13 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded and parsed");
 
-    tableau.extensions.initializeAsync({ configure: configure }).then(() => {
+    tableau.extensions.initializeAsync().then(() => {
         console.log("Extension initialized.");
+        tableau.extensions.dashboardContent.dashboard.addEventListener(tableau.TableauEventType.ContextMenuOpen, onContextMenuOpen);
         document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
     }).catch((err) => {
         console.error("Error initializing Tableau extension:", err);
     });
 });
+
+function onContextMenuOpen(contextMenuEvent) {
+    contextMenuEvent.addMenuItem('Configure', configure);
+}
 
 function configure() {
     // Your configuration logic here
