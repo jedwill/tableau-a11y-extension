@@ -6,14 +6,23 @@ import logging
 
 app = Flask(__name__)
 
+# Enable CORS for all origins and methods for testing purposes
 CORS(app, resources={r"/*": {"origins": "*", "allow_headers": "*", "methods": ["OPTIONS", "HEAD", "GET", "POST"]}})
 
 logging.basicConfig(level=logging.DEBUG)
 
+# Get the OpenAI API key from environment variable
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-@app.route('/generate-alt-text', methods=['POST'])
+@app.route('/generate-alt-text', methods=['OPTIONS', 'POST'])
 def generate_alt_text():
+    if request.method == 'OPTIONS':
+        response = jsonify({'message': 'CORS preflight'})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+        response.headers.add("Access-Control-Allow-Methods", "OPTIONS,HEAD,GET,POST")
+        return response
+
     try:
         data = request.get_json()
         app.logger.debug(f"Received data: {data}")
