@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    tableau.extensions.initializeAsync().then(() => {
-        console.log("Extension initialized.");
-    }).catch((err) => {
-        console.error("Error initializing Tableau extension:", err);
-    });
+    // Ensure the Tableau Extensions API is loaded
+    if (typeof tableau !== 'undefined') {
+        tableau.extensions.initializeAsync().then(() => {
+            console.log("Extension initialized.");
+        }).catch((err) => {
+            console.error("Error initializing Tableau extension:", err);
+        });
 
-    document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
+        document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
+    } else {
+        console.error("Tableau Extensions API is not defined.");
+    }
 });
 
 async function generateAltText() {
