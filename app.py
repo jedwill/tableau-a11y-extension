@@ -3,8 +3,16 @@ from flask_cors import CORS
 import openai
 import os
 import logging
+from flask import Response
+
+
 
 app = Flask(__name__)
+
+@app.before_request
+def basic_authentication():
+    if request.method.lower() == 'options':
+        return Response()
 
 # Enable CORS for all origins for testing purposes
 CORS(app, resources={r"/*": {"origins": "*", "allow_headers": "*", "methods": ["OPTIONS", "HEAD", "GET", "POST"]}})
