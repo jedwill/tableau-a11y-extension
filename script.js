@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Ensure the Tableau Extensions API is loaded
+    console.log("DOM fully loaded and parsed");
+
+    // Check if the Tableau Extensions API is loaded
     if (typeof tableau !== 'undefined') {
+        console.log("Tableau Extensions API loaded successfully.");
         tableau.extensions.initializeAsync().then(() => {
             console.log("Extension initialized.");
         }).catch((err) => {
