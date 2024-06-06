@@ -7,7 +7,7 @@ import logging
 app = Flask(__name__)
 
 # Enable CORS for all routes
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "*", "allow_headers": "*", "methods": "*"}})
 
 logging.basicConfig(level=logging.DEBUG)
 
