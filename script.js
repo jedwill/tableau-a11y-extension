@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded and parsed");
 
+    // Initialize with context menu handling
     tableau.extensions.initializeAsync({ configure: configure }).then(() => {
         console.log("Extension initialized.");
         document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
@@ -10,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function configure() {
-    // Your configuration logic here
     console.log("Configuration menu item clicked.");
+    // Your configuration logic here
 }
 
 async function generateAltText() {
