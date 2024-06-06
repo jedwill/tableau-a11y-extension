@@ -5,9 +5,9 @@ import os
 import logging
 
 app = Flask(__name__)
-
+app.config['CORS_HEADERS'] = 'Content-Type'
 # Enable CORS for the specific origin
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://jedwill.github.io"}})
 
 logging.basicConfig(level=logging.DEBUG)
 
