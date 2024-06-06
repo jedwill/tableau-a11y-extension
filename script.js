@@ -1,18 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded and parsed");
 
-    // Check if the Tableau Extensions API is loaded
+    // Initialize Tableau Extensions API
     if (typeof tableau !== 'undefined') {
-        console.log("Tableau Extensions API loaded successfully.");
+        console.log("Tableau Embedding API loaded successfully.");
         tableau.extensions.initializeAsync().then(() => {
             console.log("Extension initialized.");
+            document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
         }).catch((err) => {
             console.error("Error initializing Tableau extension:", err);
         });
-
-        document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
     } else {
-        console.error("Tableau Extensions API is not defined.");
+        console.error("Tableau Embedding API is not defined.");
     }
 });
 
