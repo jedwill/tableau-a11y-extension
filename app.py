@@ -7,7 +7,7 @@ import logging
 app = Flask(__name__)
 
 # Enable CORS for the specific origin
-CORS(app, resources={r"/*": {"origins": "https://jedwill.github.io/tableau-a11y-extension/"}})
+CORS(app, resources={r"/*": {"origins": "https://jedwill.github.io"}})
 
 logging.basicConfig(level=logging.DEBUG)
 

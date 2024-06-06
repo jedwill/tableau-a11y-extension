@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded and parsed");
 
-    // Initialize with context menu handling
     tableau.extensions.initializeAsync().then(() => {
         console.log("Extension initialized.");
         document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
@@ -9,11 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Error initializing Tableau extension:", err);
     });
 });
-
-function configure() {
-    console.log("Configuration menu item clicked.");
-    // Your configuration logic here
-}
 
 async function generateAltText() {
     try {
@@ -29,7 +23,7 @@ async function generateAltText() {
         const dataText = summarizeData(dataTable);
         console.log("Data Text: ", dataText);
 
-        // Call AI model to generate alt text
+        // Use the ngrok URL here
         const altText = await getAIAltText(dataText);
         console.log("Generated Alt Text: ", altText);
 
@@ -50,7 +44,7 @@ function summarizeData(dataTable) {
 
 async function getAIAltText(dataText) {
     console.log("Sending request to AI server...");
-    const response = await fetch('http://localhost:5000/generate-alt-text', {
+    const response = await fetch('https://8bfc-2601-14f-8381-8de0-8406-366b-831-9987.ngrok-free.app/generate-alt-text', { // Replace with ngrok URL
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
