@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import openai
 import os
 from dotenv import load_dotenv
 import logging
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+
 logging.basicConfig(level=logging.DEBUG)
 
 # Load environment variables from .env file
