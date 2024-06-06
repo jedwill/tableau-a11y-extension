@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded and parsed");
 
-    // Initialize Tableau Extensions API
+    // Check if the Tableau Extensions API is loaded
     if (typeof tableau !== 'undefined') {
-        console.log("Tableau Embedding API loaded successfully.");
+        console.log("Tableau Extensions API loaded successfully.");
         tableau.extensions.initializeAsync().then(() => {
             console.log("Extension initialized.");
             document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Error initializing Tableau extension:", err);
         });
     } else {
-        console.error("Tableau Embedding API is not defined.");
+        console.error("Tableau Extensions API is not defined.");
     }
 });
 
