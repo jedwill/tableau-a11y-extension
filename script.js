@@ -43,7 +43,7 @@ function summarizeData(dataTable) {
 async function getAIAltText(dataText) {
     try {
         console.log("Sending request to AI server...");
-        const response = await fetch('https://khaki-numbers-argue.loca.lt/generate-alt-text', {
+        const response = await fetch('https://popular-quail-19.loca.lt/generate-alt-text', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
