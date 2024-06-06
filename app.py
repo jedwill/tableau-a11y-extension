@@ -3,26 +3,13 @@ from flask_cors import CORS
 import openai
 import os
 import logging
-from flask import Response
-
-
 
 app = Flask(__name__)
 
-@app.before_request
-def before_request():
-    headers = {'Access-Control-Allow-Origin': '*',
-               'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-               'Access-Control-Allow-Headers': 'Content-Type'}
-    if request.method.lower() == 'options':
-        return jsonify(headers), 200
-
-# Enable CORS for all origins for testing purposes
 CORS(app, resources={r"/*": {"origins": "*", "allow_headers": "*", "methods": ["OPTIONS", "HEAD", "GET", "POST"]}})
 
 logging.basicConfig(level=logging.DEBUG)
 
-# Get the OpenAI API key from environment variable
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 @app.route('/generate-alt-text', methods=['POST'])
