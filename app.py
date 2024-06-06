@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import logging
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, resources={r"/*": {"origins": "https://jedwill.github.io"}})  # Enable CORS for the specific origin
 
 logging.basicConfig(level=logging.DEBUG)
 
