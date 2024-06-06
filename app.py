@@ -2,18 +2,14 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import openai
 import os
-from dotenv import load_dotenv
 import logging
 
 app = Flask(__name__)
 
 # Enable CORS for the specific origin
-CORS(app, resources={r"/*": {"origins": ["https://jedwill.github.io"]}})
+CORS(app, resources={r"/*": {"origins": "https://jedwill.github.io/tableau-a11y-extension/"}})
 
 logging.basicConfig(level=logging.DEBUG)
-
-# Load environment variables from .env file
-load_dotenv()
 
 # Get the OpenAI API key from environment variable
 openai.api_key = os.getenv('OPENAI_API_KEY')
