@@ -6,16 +6,24 @@ import logging
 
 app = Flask(__name__)
 
-# Enable CORS for all origins
-CORS(app)
+# Enable CORS for all routes
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 logging.basicConfig(level=logging.DEBUG)
 
 # Get the OpenAI API key from environment variable
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-@app.route('/generate-alt-text', methods=['POST'])
+@app.route('/generate-alt-text', methods=['POST', 'OPTIONS'])
 def generate_alt_text():
+    if request.method == 'OPTIONS':
+        # CORS preflight request
+        response = app.make_response('')
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization,bypass-tunnel-reminder")
+        response.headers.add("Access-Control-Allow-Methods", "OPTIONS,POST")
+        return response
+    
     try:
         data = request.get_json()
         app.logger.debug(f"Received data: {data}")
@@ -32,10 +40,15 @@ def generate_alt_text():
         
         alt_text = response.choices[0].message['content'].strip()
         app.logger.debug(f"Generated alt text: {alt_text}")
-        return jsonify({'altText': alt_text})
+        
+        response = jsonify({'altText': alt_text})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     except Exception as e:
         app.logger.error(f"Error occurred: {e}")
-        return jsonify({'error': str(e)}), 500
+        response = jsonify({'error': str(e)})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response, 500
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=8000)

@@ -23,11 +23,9 @@ async function generateAltText() {
         const dataText = summarizeData(dataTable);
         console.log("Data Text: ", dataText);
 
-        // Use the ngrok URL here
         const altText = await getAIAltText(dataText);
         console.log("Generated Alt Text: ", altText);
 
-        // Display the generated alt text
         document.getElementById('alt-text-container').innerText = altText;
     } catch (error) {
         console.error("Error generating alt text:", error);
@@ -43,20 +41,25 @@ function summarizeData(dataTable) {
 }
 
 async function getAIAltText(dataText) {
-    console.log("Sending request to AI server...");
-    const response = await fetch('https://8bfc-2601-14f-8381-8de0-8406-366b-831-9987.ngrok-free.app/generate-alt-text', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ text: dataText })
-    });
-    
-    if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Error generating alt text: ${response.status} - ${errorText}`);
+    try {
+        console.log("Sending request to AI server...");
+        const response = await fetch('https://khaki-numbers-argue.loca.lt/generate-alt-text', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'bypass-tunnel-reminder': 'true'
+            },
+            body: JSON.stringify({ text: dataText })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Error generating alt text: ${response.status} - ${errorText}`);
+        }
+
+        const responseData = await response.json();
+        return responseData.altText;
+    } catch (error) {
+        console.error('Error generating alt text:', error);
     }
-    
-    const responseData = await response.json();
-    return responseData.altText;
 }
