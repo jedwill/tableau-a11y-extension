@@ -14,7 +14,7 @@
         <permission>full data</permission>
     </permissions>
     <context-menu>
-        <configure-context-menu-item />
+        <menu-item key="configure" name="Configure"/>
     </context-menu>
     </dashboard-extension>
     <resources>

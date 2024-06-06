@@ -1,24 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded and parsed");
 
-    // Check if the Tableau Extensions API is loaded
-    if (typeof tableau !== 'undefined') {
-        console.log("Tableau Extensions API loaded successfully.");
-        tableau.extensions.initializeAsync().then(() => {
-            console.log("Extension initialized.");
-            document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
-        }).catch((err) => {
-            console.error("Error initializing Tableau extension:", err);
-        });
-    } else {
-        console.error("Tableau Extensions API is not defined.");
-    }
+    tableau.extensions.initializeAsync({ configure: configure }).then(() => {
+        console.log("Extension initialized.");
+        document.getElementById('generate-alt-text').addEventListener('click', generateAltText);
+    }).catch((err) => {
+        console.error("Error initializing Tableau extension:", err);
+    });
 });
+
+function configure() {
+    // Your configuration logic here
+    console.log("Configuration menu item clicked.");
+}
 
 async function generateAltText() {
     try {
         const dashboard = tableau.extensions.dashboardContent.dashboard;
+        console.log("Dashboard: ", dashboard);
+
         const worksheet = dashboard.worksheets[0];
+        console.log("Worksheet: ", worksheet);
 
         const dataTable = await worksheet.getSummaryDataAsync();
         console.log("Data Table: ", dataTable);
