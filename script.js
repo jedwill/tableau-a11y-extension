@@ -23,7 +23,7 @@ async function generateAltText() {
         const dataText = summarizeData(dataTable);
         console.log("Data Text: ", dataText);
 
-        const altText = await getAIAltText(dataTable);
+        const altText = await getAIAltText(JSON.stringify(dataTable));
         console.log("Generated Alt Text: ", altText);
 
         document.getElementById('alt-text-container').innerText = altText;
